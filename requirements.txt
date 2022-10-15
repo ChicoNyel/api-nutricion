@@ -3,3 +3,4 @@ django
 djangorestframework
 requests
 pymysql
+graphene-django
