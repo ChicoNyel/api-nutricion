@@ -4,3 +4,4 @@ djangorestframework
 requests
 pymysql
 graphene-django
+psycopg2

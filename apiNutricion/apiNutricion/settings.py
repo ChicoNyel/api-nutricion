@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ENVIORMENT = "DEV"
+#ENVIORMENT = "LOCAL"
 
 # Application definition
 
@@ -79,16 +81,31 @@ WSGI_APPLICATION = 'apiNutricion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'api-nutricion',
-        'USER': 'root',
-        'PASSWORD': 'sasa',
-        'HOST': 'localhost',
-        'PORT': '3306',
+if ENVIORMENT == "LOCAL":
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'api-nutricion',
+            'USER': 'root',
+            'PASSWORD': 'sasa',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
     }
-}
+
+elif ENVIORMENT == "DEV":
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'PASSWORD': 'ApiNutricionPassword123',
+            'HOST': 'db.fogymzkbhqesbuibimxd.supabase.co',
+            'PORT': '5432',
+        }
+    }
 
 
 # Password validation
