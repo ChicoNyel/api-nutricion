@@ -23,3 +23,17 @@ class Food(TimeStampMixin):
 
     def __str__(self):
         return self.name
+
+
+class User(TimeStampMixin):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=1000, blank=True, null=True)
+    email = models.CharField(max_length=1000, blank=True, null=True)
+    username = models.CharField(max_length=1000, blank=True, null=True)
+    password = models.CharField(max_length=1000, blank=True, null=True)
+
+    class Meta:
+        db_table = 'user'
+
+    def __str__(self):
+        return self.username

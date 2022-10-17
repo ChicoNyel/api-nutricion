@@ -27,8 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-ENVIORMENT = "DEV"
-#ENVIORMENT = "LOCAL"
+#ENVIORMENT = "DEV"
+#ENVIORMENT = "LOCAL MYSQL"
+ENVIORMENT = "LOCAL POSGRESQL"
 
 # Application definition
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'graphene_django',
+    'rest_framework',
 
     'api',
     'kernel',
@@ -81,7 +83,7 @@ WSGI_APPLICATION = 'apiNutricion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-if ENVIORMENT == "LOCAL":
+if ENVIORMENT == "LOCAL MYSQL":
 
     DATABASES = {
         'default': {
@@ -91,6 +93,19 @@ if ENVIORMENT == "LOCAL":
             'PASSWORD': 'sasa',
             'HOST': 'localhost',
             'PORT': '3306',
+        }
+    }
+
+elif ENVIORMENT == "LOCAL POSGRESQL":
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'api-nutricion',
+            'USER': 'postgres',
+            'PASSWORD': 'sasa',
+            'HOST': 'localhost',
+            'PORT': '5433',
         }
     }
 

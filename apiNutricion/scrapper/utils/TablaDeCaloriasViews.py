@@ -33,6 +33,8 @@ def get_data() -> bool:
             formato['equivalencia'] = str(row).split('>')[7].split('<')[0] + ' g'
             formato['calorias'] = str(row).split('>')[19].split('<')[0] + ' kcal'
 
+            print(formato)
+
             try:
                 food = Food.objects.get(name=formato['nombre'])
             except:
