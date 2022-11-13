@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, DestroyAPIView, UpdateAPIView, RetrieveUpdateAPIView
 
 from kernel.models import Food, User
-from kernel.serializers import FoodSerializer, UserSerializer
+from kernel.serializers import FoodSerializer, UserSerializer, FoodPagination, UserPagination
 
 # Create your views here.
 
@@ -25,9 +25,19 @@ def get_food(request: WSGIRequest, arg: str = None) -> Response:
     return Response(serializer.data)
 
 
+class FoodListApiView(ListAPIView):
+
+    serializer_class = FoodSerializer
+    pagination_class = FoodPagination
+
+    def get_queryset(self):
+        return Food.objects.all()
+
+
 class UserListApiView(ListAPIView):
 
     serializer_class = UserSerializer
+    pagination_class = UserPagination
 
     def get_queryset(self):
         return User.objects.all()
